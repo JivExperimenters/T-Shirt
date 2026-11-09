@@ -5,6 +5,7 @@ export default defineConfig({
   description:
     "IS117-007 T-shirt competitive research, screenshot evidence, positioning hypotheses, and website specifications.",
   base: "/T-Shirt/",
+  rewrites: { "README.md": "index.md" },
   themeConfig: {
     outline: { level: 2, label: "On This Page" },
     nav: [
