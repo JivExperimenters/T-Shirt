@@ -1,0 +1,11 @@
+IS117 Multi-Brand Audit of Brand Archetypes, Cialdini Persuasion Cues, Modernist vs. Postmodernist Design, and E-Commerce Buying Flows
+Executive Summary & Thursday In-Class Sharing Brief
+Student & Course: Jivitesh Duddu | IS117 (Intro to Website Development, NJIT) | Date: November 5, 2026
+Research Question: "How do competing online T-shirt retailers across novelty graphic, wholesale blank, and custom/blank hybrid models explain value, organize visual hierarchy, and reduce cost or fit uncertainty for a first-time desktop buyer?"
+Competitors Audited: 1. Crazy Dog T-Shirts (crazydogtshirts.com — D2C novelty/humor graphic tees)
+2. CheapesTees (cheapestees.com — everyday wholesale blank & custom basics)
+3. Jiffy (jiffy.com — rapid-delivery blank tees, DTF transfers, and custom print mockup platform)
++ Adjacent UX Reference: Mobbin (On iOS 'Adding to Bag' flow for size-context retention).
+Main Analytical Finding: Modernist interface organization (clean grids, upfront delivery dates, and multi-tier size/color pricing tables on Jiffy and CheapesTees) reduces buying friction far better than cluttered overlays, while Postmodernist expressive humor (Crazy Dog) and relatable lifestyle framing build stronger emotional liking. However, hidden cart additions (such as CheapesTees' pre-selected $0.49 Shipping Protection) or steep single-item custom print jumps (Jiffy's $7.53 blank tee rising to $48.33 with custom printing and Saturday rush shipping) create checkout friction.
+Primary Recommendation for My T-Shirt Website: Combine a Modernist, distraction-free shopping grid and upfront ZIP-code delivery/cost transparency (adapted from Jiffy and CheapesTees) with aspect-specific customer reviews (fit, fabric weight, print durability) and relatable, humor-driven product collections (adapted from Crazy Dog).
+
