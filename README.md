@@ -16,13 +16,13 @@ This is the research record for my individual T-shirt website project. I compare
 
 ## At a glance
 
-| Site | Role | Example price seen | Brand / visual reading | What I learned |
+| Site | Role and example price | Look | Brand character | Persuasion cues and what it suggests |
 | --- | --- | --- | --- | --- |
-| [Crazy Dog T-Shirts](https://www.crazydogtshirts.com/) | Direct competitor: novelty graphic tees | Selected shirt: `$14.99` on display; shipping and tax deferred | Jester; expressive, postmodern tendencies | Humor is memorable; floating promotions and late cost details add friction. |
-| [CheapesTees](https://www.cheapestees.com/) | Direct competitor: wholesale blanks and custom basics | Gildan 3000, White, M: `$2.98`; cart subtotal `$3.47` with preselected `$0.49` Shipping Protection | Everyperson; functional, modernist catalog | The grid makes comparison easy; an opt-out fee hurts price clarity. |
-| [Jiffy](https://www.jiffy.com/) | Direct competitor: blanks, transfers, and custom printing | C1717 blank: `$6.28` White / `$7.53` Butter in the report; custom cart total `$48.33` with selected rush delivery | Creator; structured interface with expressive custom designs | ZIP delivery and size-tier details help; printing and expedited delivery can change the total substantially. |
+| [Crazy Dog T-Shirts](https://www.crazydogtshirts.com/) | Novelty graphic tees; selected shirt `$14.99` | Expressive, busy, and postmodern | Jester | Relatable humor supports liking; `$18.99` crossed out to `$14.99` is a price anchor, not verified regular pricing. A floating wheel prompt competes with browsing. |
+| [CheapesTees](https://www.cheapestees.com/) | Wholesale blanks/custom basics; Gildan 3000 White, M: `$2.98`; `$3.47` cart subtotal | Functional, modernist catalog | Everyperson | Visible review counts aid comparison but are not independently verified. The preselected `$0.49` Shipping Protection is an opt-out cost, so show the full total and make extras opt-in. |
+| [Jiffy](https://www.jiffy.com/) | Blanks/transfers/custom printing; C1717 White `$6.28` / Butter `$7.53` in the report; custom cart `$48.33` with rush delivery | Structured, with expressive custom designs | Creator | Ratings and eligible-product offers are merchant claims, not independently audited. ZIP-specific delivery details can help planning; distinguish blank, print, and delivery costs. |
 
-The products and cart configurations differ, so these prices are examples from the observed pages—not a controlled, like-for-like price comparison.
+Sources and page observations below were captured November 5, 2026. The products and cart configurations differ, so these prices are examples from the observed pages—not a controlled, like-for-like price comparison.
 
 ## Crazy Dog T-Shirts: expressive humor
 
@@ -35,7 +35,11 @@ Sources: [homepage](https://www.crazydogtshirts.com/) and [selected product page
 | `E03` — Product | The selected “Can't Work Today My Arm Is In A Cast” shirt in Heather Navy, size S, showed `$14.99`; sizes `S–5XL` were visible. Fabric weight was not visible above the fold. | Put fit and material details near size selection rather than making shoppers hunt for them. |
 | `E04` — Cart | One shirt showed a `$14.99` subtotal; shipping and tax were deferred to checkout. | Show an honest shipping estimate earlier in the buying journey. |
 
-**Look and character (interpretation):** The grid uses familiar e-commerce organization, while the humor, busy hero, and playful shirt graphics suggest a postmodern visual voice. The brand reads as a **Jester**, with liking and price anchoring visible in the selected screens. “Most Loved” and review cues are merchant-provided; I did not independently verify them.
+**Look:** Familiar e-commerce organization is paired with a busy hero and playful shirt graphics, suggesting a postmodern visual voice.
+
+**Brand character (interpretation):** **Jester**, expressed through novelty and everyday humor.
+
+**Honest persuasion:** Humor can earn attention, but avoid using an unverified comparison price as proof of savings. Keep offer terms clear and show shipping costs before checkout. “Most Loved” and review cues are merchant-provided, not independently verified.
 
 ### Evidence: Crazy Dog
 
@@ -58,7 +62,11 @@ Sources: [homepage](https://www.cheapestees.com/), [Gildan collection](https://w
 | `E07` — Product | Gildan 3000 in White showed `$2.98`. **The report text says the comparison price is `$5.80`, while the screenshot appears to show `$5.00`; this figure needs a recheck.** | Keep price claims verifiable and distinguish the store price from any comparison price. |
 | `E08` — Cart | The `$2.98` shirt produced a `$3.47` subtotal because `$0.49` Shipping Protection was preselected. Shipping required a State/ZIP lookup. | Paid cart options should be opt-in, and all cost components should be clear. |
 
-**Look and character (interpretation):** A consistent catalog grid, product codes, and functional labels suggest a modernist interface and an **Everyperson** character. Visible review counts and product details support comparison, but do not independently verify product quality or review authenticity.
+**Look:** A consistent catalog grid, product codes, and functional labels suggest a practical, modernist interface.
+
+**Brand character (interpretation):** **Everyperson**, with an emphasis on utility and accessible prices.
+
+**Honest persuasion:** Review counts are merchant-provided cues, not proof of product quality or review authenticity. State the `$69` free-shipping threshold, make paid extras opt-in, and show all cart costs clearly.
 
 ### Evidence: CheapesTees
 
@@ -81,7 +89,11 @@ Sources: [homepage](https://www.jiffy.com/), [Comfort Colors category](https://w
 | `E11` — Product | The C1717 page showed color and size choices and a “Create Mockup” action. The report text and capture differ on review counts and some extended-size prices. | Present a clear size/color price matrix, but verify details against the captured evidence before quoting exact figures. |
 | `E12` — Custom cart | A custom-print item showed `$38.38`; selected Saturday Fast Delivery added `$9.95`, for a `$48.33` total. A `$0.00` Standard Delivery option was also visible. | Distinguish blank-shirt price from custom-print price, and show delivery choices and their costs together. |
 
-**Look and character (interpretation):** The interface is structured around filtering, delivery, and price, while custom graphics make the product experience participatory. This suggests a **Creator** character with a modernist interface. Delivery cues can reduce uncertainty; they should not imply a guarantee beyond what the store can actually honor.
+**Look:** Filtering, delivery, and price information create a structured interface; custom graphics make the product experience participatory.
+
+**Brand character (interpretation):** **Creator**, supported by a modernist shopping interface.
+
+**Honest persuasion:** State which products qualify for offers and distinguish blank-shirt, printing, and delivery prices. Delivery estimates can reduce uncertainty, but should not be presented as guarantees beyond what the store can honor.
 
 ### Evidence: Jiffy
 
@@ -113,9 +125,11 @@ These are early audience and positioning hypotheses, not interview findings.
 
 ## Brand Studio direction and assumptions
 
+This direction reuses the [IS117 Brand Studio](https://github.com/JivExperimenters/is117-brand-studio) approach: treat audience personas as hypotheses, and make the brand's visual character and persuasion choices explicit.
+
 - **Look:** Use a restrained, modernist shopping layout with clear product cards, whitespace, and size/price information; let the shirt artwork and collection copy carry the expressive, postmodern quality.
-- **Brand character:** Blend **Creator** and **Everyperson**, with a little **Jester** humor—creative, helpful, and approachable.
-- **Honest persuasion:** Prefer accurate product specifications, genuine wearer feedback, and clear offer terms. Do not invent reviews, scarcity, material claims, or delivery promises.
+- **Brand character:** **Creator** is the primary archetype; **Everyperson** and **Jester** are supporting influences. The voice should be creative, helpful, and approachable, with light humor.
+- **Honest persuasion:** Use social proof only through genuine wearer feedback; keep product details and offer terms verifiable. Clear fit and shipping information can reduce uncertainty, but do not invent reviews, scarcity, material claims, or delivery promises.
 - **Assumption 1:** Fit, fabric, and shrinkage feedback will help a first-time buyer choose a size more than a measurement chart alone.
 - **Assumption 2:** Showing a shipping estimate in the cart will make total cost easier to understand.
 - **Assumption 3:** A visible student offer will feel clearer than an email-gated spin wheel.
