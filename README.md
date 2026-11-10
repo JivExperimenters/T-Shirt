@@ -1,16 +1,15 @@
-# T-Shirt Site Research (IS117-007)
+# Competitive Research Critique: T-Shirt Retailers (IS117-007)
 
 **Student:** Jivitesh Duddu
 
 **Research captured:** November 4–5, 2026
-
 **Shopper scenario:** A first-time US desktop shopper near Butler, NJ (`07405`), choosing one short-sleeve crewneck in Small or Medium and proceeding from product evaluation to cart.
 
-This is the research record for my individual T-shirt website project. I compared three apparel retailers with different business models to identify useful design choices and checkout friction.
+This document critiques evidence from three apparel retailers; it is not a review or redesign of my own website. It compares what was observed, what those observations can reasonably suggest, and where the evidence is too limited to support a stronger claim.
 
-**Research question:** How do online T-shirt retailers explain value, organize their shopping experience, and reduce cost or fit uncertainty for a first-time desktop shopper?
+**Research question:** What can a first-time US desktop shopper learn about value, product choice, fit, and delivery from these retailers, and what can a short observational comparison reasonably tell me?
 
-**Main finding:** A clean shopping interface, clear size and price details, and visible delivery information can make product comparison easier. Expressive graphics and relatable copy add personality, but surprise costs and intrusive prompts can weaken trust. My proposed direction is to combine a restrained store layout with expressive designs and honest product and cart information.
+**Main finding:** The captured pages show different approaches: Crazy Dog emphasizes humorous graphics and promotions; CheapesTees foregrounds low-cost blanks and catalog comparison; Jiffy combines product selection with delivery and customization information. These observations suggest useful questions about clarity and persuasion, but three retailers, one shopper scenario, and a brief page audit cannot establish which approach works best or how customers behave.
 
 **Evidence vs. assumptions:** `E01–E12`, dated page observations, and screenshot contents are the evidence recorded during the audit. Brand readings, positioning choices, personas, and design implications are interpretations or hypotheses—not verified customer research.
 
@@ -105,6 +104,14 @@ Sources: [homepage](https://www.jiffy.com/), [Comfort Colors category](https://w
 
 More evidence: [E10 Comfort Colors category screenshot](screenshots/e10-jiffy-category.png).
 
+## Critique of the comparison
+
+The three retailers are relevant because they represent different T-shirt shopping contexts: novelty graphics, low-cost blank apparel, and blanks/customization with delivery choices. The dated homepage, category, product, and cart observations make the comparison traceable to captured evidence. The strongest conclusions are about what information or prompts appeared in those specific page captures—not about customer satisfaction, conversion, or which retailer is objectively better.
+
+The comparison is not like-for-like: products, prices, cart contents, and shipping thresholds differ. It is also a small, single-time snapshot of selected desktop pages for one US shopper scenario, not a representative sample of apparel stores or shoppers. Some written notes conflict with screenshots (`E07`, `E10–E11`), so affected numeric details should be rechecked before they are used as evidence. Merchant claims such as ratings, savings, and delivery estimates were not independently verified. These limits mean the observations can guide questions and hypotheses, but cannot prove that a particular design causes trust, ease, or purchase.
+
+**Research judgment:** The evidence is useful for identifying visible tradeoffs—promotional intensity versus focus, catalog clarity versus price complexity, and delivery detail versus offer eligibility—but weak for ranking the businesses or generalizing to all shoppers. A next research step should verify conflicting captures and ask target shoppers to compare the same product and explain what information affects their choice.
+
 ## Two positions and two persona hypotheses
 
 These are early audience and positioning hypotheses, not interview findings.
@@ -136,9 +143,9 @@ This direction reuses the [IS117 Brand Studio](https://github.com/JivExperimente
 
 **Validation for Assumption 1:** Ask five peer shoppers to choose a size using a measurement chart, then ask what additional fit/fabric feedback changes their decision. Record whether the proposed three-part fit, softness, and durability review helps them explain their choice. This is a planned check; it has not yet been run.
 
-## What I plan to take from the research
+## What the comparison suggests (design hypotheses)
 
-These are design proposals, not implemented or validated storefront features:
+These are implications from the comparison, not findings about my own website and not validated storefront features:
 
 1. Keep the product grid calm and easy to scan; do not interrupt browsing with a spin-the-wheel prompt.
 2. Show fabric, fit guidance, and exact size prices near the size selector.
