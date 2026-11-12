@@ -17,7 +17,7 @@ This document critiques evidence from three apparel retailers; it is not a revie
 
 | Site | Role and example price | Look | Brand character | Persuasion cues and what it suggests |
 | --- | --- | --- | --- | --- |
-| [Crazy Dog T-Shirts](https://www.crazydogtshirts.com/) | Novelty graphic tees; selected shirt `$14.99` | Expressive, busy, and postmodern | Jester | Relatable humor supports liking; `$18.99` crossed out to `$14.99` is a price anchor, not verified regular pricing. A floating wheel prompt competes with browsing. |
+| [Crazy Dog T-Shirts](https://www.crazydogtshirts.com/) | Novelty graphic tees; selected shirt `$14.99` | Expressive shirt graphics in a familiar, relatively minimalist storefront | Jester | Humor and artwork add personality, but the captured pages do not establish that the overall site is postmodern. `$18.99` crossed out to `$14.99` is a price anchor, not verified regular pricing. A floating wheel prompt competes with browsing. |
 | [CheapesTees](https://www.cheapestees.com/) | Wholesale blanks/custom basics; Gildan 3000 White, M: `$2.98`; `$3.47` cart subtotal | Functional, modernist catalog | Everyperson | Visible review counts aid comparison but are not independently verified. The preselected `$0.49` Shipping Protection is an opt-out cost, so show the full total and make extras opt-in. |
 | [Jiffy](https://www.jiffy.com/) | Blanks/transfers/custom printing; C1717 White `$6.28` / Butter `$7.53` in the report; custom cart `$48.33` with rush delivery | Structured, with expressive custom designs | Creator | Ratings and eligible-product offers are merchant claims, not independently audited. ZIP-specific delivery details can help planning; distinguish blank, print, and delivery costs. |
 
@@ -34,7 +34,7 @@ Sources: [homepage](https://www.crazydogtshirts.com/) and [selected product page
 | `E03` — Product | The selected “Can't Work Today My Arm Is In A Cast” shirt in Heather Navy, size S, showed `$14.99`; sizes `S–5XL` were visible. Fabric weight was not visible above the fold. | Put fit and material details near size selection rather than making shoppers hunt for them. |
 | `E04` — Cart | One shirt showed a `$14.99` subtotal; shipping and tax were deferred to checkout. | Show an honest shipping estimate earlier in the buying journey. |
 
-**Look:** Familiar e-commerce organization is paired with a busy hero and playful shirt graphics, suggesting a postmodern visual voice.
+**Look:** The captured pages use a familiar, relatively minimalist e-commerce layout. The hero, playful graphics, and humor make the products expressive, but those cues alone do not establish a postmodern design approach across the website.
 
 **Brand character (interpretation):** **Jester**, expressed through novelty and everyday humor.
 
@@ -110,7 +110,7 @@ The three retailers are relevant because they represent different T-shirt shoppi
 
 The comparison is not like-for-like: products, prices, cart contents, and shipping thresholds differ. It is also a small, single-time snapshot of selected desktop pages for one US shopper scenario, not a representative sample of apparel stores or shoppers. Some written notes conflict with screenshots (`E07`, `E10–E11`), so affected numeric details should be rechecked before they are used as evidence. Merchant claims such as ratings, savings, and delivery estimates were not independently verified. These limits mean the observations can guide questions and hypotheses, but cannot prove that a particular design causes trust, ease, or purchase.
 
-**Research judgment:** The evidence is useful for identifying visible tradeoffs—promotional intensity versus focus, catalog clarity versus price complexity, and delivery detail versus offer eligibility—but weak for ranking the businesses or generalizing to all shoppers. A next research step should verify conflicting captures and ask target shoppers to compare the same product and explain what information affects their choice.
+**Research judgment:** The evidence is useful for identifying visible tradeoffs—promotional intensity versus focus, catalog clarity versus price complexity, and delivery detail versus offer eligibility—but weak for ranking the businesses or generalizing to all shoppers. The Crazy Dog capture supports a distinction between expressive product artwork and a conventional storefront; it does not support a broad claim that the site itself is postmodern. A next research step should verify conflicting captures, compare artist/independent-design marketplaces such as [Threadless](https://www.threadless.com/) and [Redbubble](https://www.redbubble.com/) for Maya's use case, and test a 30-shirt bulk order for Marcus against quantity pricing, size/color availability, and delivered value.
 
 ## Two positions and two persona hypotheses
 
@@ -118,15 +118,15 @@ These are early audience and positioning hypotheses, not interview findings.
 
 | | Position A — chosen direction | Position B — alternative |
 | --- | --- | --- |
-| **Position** | A clean, easy-to-scan store for expressive graphic and custom shirts, with clear fit, fabric, size pricing, and delivery information. | A high-volume flash-sale novelty catalog with dense designs, gamified prompts, and repeated sale pricing. |
-| **Research basis** | Uses the organized product and delivery details observed at CheapesTees and Jiffy, with expressive design inspiration from Crazy Dog. | Extends Crazy Dog's humor and sale presentation. |
-| **Tradeoff** | A quieter interface may feel less immediately entertaining. | More visual energy can compete with product selection and cost clarity. |
-| **Decision** | **Chosen to test:** it addresses the prompt and checkout frictions recorded in `E01`, `E04`, and `E08`. | **Not chosen:** it risks repeating those same friction points. |
+| **Position** | A clean, easy-to-scan store for expressive graphic and custom shirts, with clear fit, fabric, size pricing, and delivery information. | A utility-first wholesale store for event organizers buying 30+ matching shirts, with quantity-tier pricing, size/color availability, stock status, and a clear delivered-cost estimate. |
+| **Research basis** | Uses the organized product and delivery details observed at CheapesTees and Jiffy, with expressive design inspiration from Crazy Dog. | CheapesTees provides a wholesale/catalog reference and visible unit prices, but this audit did not test quantity discounts, live inventory, or a bulk-order flow. Those capabilities are requirements to investigate, not verified competitor features. |
+| **Tradeoff** | A quieter interface may feel less immediately entertaining. | Serving bulk buyers requires reliable inventory, broad size/color availability, and pricing and delivery information for the whole order. |
+| **Decision** | **Chosen to test:** it addresses the prompt and checkout frictions recorded in `E01`, `E04`, and `E08`. | **Not chosen for the first version:** it is a distinct, utility-led alternative for Marcus, not a novelty-sale concept. Its operational requirements exceed the current project's scope. |
 
 | Persona hypothesis | Situation and goal | Why this audience might fit | What remains unknown |
 | --- | --- | --- | --- |
-| **Maya, 20 — primary** | A creative college student or indie buyer shopping for one to three graphic/custom shirts; values original designs, easy browsing, and fit/shrinkage information. | The proposed expressive collections and visible product details are intended to serve these needs. | This is a persona hypothesis, not a real interview. Test whether students prioritize these features and whether the proposed price/value feels credible. |
-| **Marcus, 34 — secondary** | A bulk event organizer who needs 30+ blank or matching shirts, broad size options, and low unit prices. | The wholesale examples show a distinct bulk-shopping use case. | Competing on wholesale price may require more inventory and scale than an initial student project. Validate before expanding the audience. |
+| **Maya, 20 — primary** | A creative college student or indie buyer shopping for one to three distinctive graphic/custom shirts; values original artwork, easy browsing, and fit/shrinkage information. | The proposed expressive collections and visible product details are intended to serve these needs. The current audit has no artist-marketplace comparison, so the existing three retailers do not fully represent this audience. | This is a persona hypothesis, not a real interview. Compare Threadless and Redbubble in a follow-up audit and test whether students prioritize these features and find the proposed price/value credible. |
+| **Marcus, 34 — secondary** | A bulk event organizer who needs 30+ matching shirts, inclusive size/color options, dependable stock, low per-shirt cost, and a predictable delivered total. | Position B is designed around this utility-first task. The audit observed catalog and unit-price cues at CheapesTees, but did not check bulk price breaks, stock by size/color, or order fulfillment. | Competing on wholesale value may require inventory and scale beyond an initial student project. Validate a 30-shirt configuration, including size mix, quantity tiers, availability, shipping, and total cost before expanding the audience. |
 
 **Primary audience for the first version:** creative student shoppers, represented by the Maya hypothesis. This is a project choice to test—not a claim that research participants have confirmed it.
 
@@ -134,7 +134,7 @@ These are early audience and positioning hypotheses, not interview findings.
 
 This direction reuses the [IS117 Brand Studio](https://github.com/JivExperimenters/is117-brand-studio) approach: treat audience personas as hypotheses, and make the brand's visual character and persuasion choices explicit.
 
-- **Look:** Use a restrained, modernist shopping layout with clear product cards, whitespace, and size/price information; let the shirt artwork and collection copy carry the expressive, postmodern quality.
+- **Look:** Use a restrained, easy-to-scan shopping layout with clear product cards, whitespace, and size/price information. Let the artwork and collection copy carry the expressive character; do not describe the overall storefront as postmodern without stronger evidence.
 - **Brand character:** **Creator** is the primary archetype; **Everyperson** and **Jester** are supporting influences. The voice should be creative, helpful, and approachable, with light humor.
 - **Honest persuasion:** Use social proof only through genuine wearer feedback; keep product details and offer terms verifiable. Clear fit and shipping information can reduce uncertainty, but do not invent reviews, scarcity, material claims, or delivery promises.
 - **Assumption 1:** Fit, fabric, and shrinkage feedback will help a first-time buyer choose a size more than a measurement chart alone.
@@ -161,12 +161,15 @@ The current research-round requirement is **3–5 constructive issues per classm
 | --- | --- | --- | --- |
 | [#3 — Peer review request](https://github.com/JivExperimenters/T-Shirt/issues/3) | Asked classmates to review whether the 3-bar fit/softness/durability idea helps student buyers and whether the cart shipping calculator addresses `E04`/`E08`. | Await classmate feedback; respond to each specific suggestion in the issue and update the research if warranted. | Open; review requested. |
 | [#4 — Validate Assumption 1](https://github.com/JivExperimenters/T-Shirt/issues/4) | **Decision: implement.** Record a concrete peer check for the fit-review assumption while awaiting classmate feedback. | The five-peer check is described above. Run it, record what happened, and link the evidence in the issue. | Open; validation planned, not run. |
+| [#12 — Crazy Dog's postmodernism](https://github.com/JivExperimenters/T-Shirt/issues/12) | **Decision: qualify the interpretation.** The captured site has a familiar, relatively minimalist layout; expressive graphics and humor are product-level cues, not enough to label the whole site postmodern. | Revised the Crazy Dog reading and brand-direction language; the design lens remains an interpretation, not a finding about the merchant's intent. | Open; wording updated locally, awaiting reviewer recheck. |
+| [#13 — Competitors for Maya](https://github.com/JivExperimenters/T-Shirt/issues/13) | **Decision: add relevant follow-up candidates.** Threadless and Redbubble are included as artist/independent-design marketplace candidates, not as audited evidence. | Add both to the next comparable shopper-journey audit; capture product, fit, price, and cart evidence before drawing conclusions. | Open; follow-up research pending. |
+| [#14 — Position B and Marcus](https://github.com/JivExperimenters/T-Shirt/issues/14) | **Decision: redefine Position B around Marcus's bulk utility needs.** | The alternative now specifies quantity pricing, size/color availability, stock status, and delivered value. Test a 30-shirt order; the current audit does not verify bulk tiers or inventory. | Open; position clarified locally, validation pending. |
 
 For accepted feedback, preserve the chain **issue → decision → commit/PR → check → resolution**. Keep unfinished items open with a next step. Keep private reflections and personal eligibility circumstances in Canvas, not in this public README.
 
 ## Method, AI use, and limits
 
-- **Method:** Inspected public US desktop pages for Crazy Dog, CheapesTees, and Jiffy on November 4–5, 2026. Recorded the homepage, category/listing, product, and cart/checkout-entry stages as `E01–E12`. No account was created, mailing list joined, or payment submitted.
+- **Method:** Inspected public US desktop pages for Crazy Dog, CheapesTees, and Jiffy on November 4–5, 2026. Recorded the homepage, category/listing, product, and cart/checkout-entry stages as `E01–E12`. Threadless and Redbubble are proposed for follow-up, not part of this evidence set. No account was created, mailing list joined, or payment submitted.
 - **My work:** Selected the competitors and shopper scenario, captured the screenshots, recorded the visible page details, and chose the proposed audience and store direction.
 - **AI assistance:** As disclosed in the PDF, ChatGPT and Gemini helped organize notes and screenshots into the report, systematically check Cialdini principles, separate design lenses, and format evidence-to-recommendation chains. I remain responsible for verifying and explaining the research.
 - **Limits:** Shipping/tax totals were not confirmed on Crazy Dog or CheapesTees. Ratings and merchant claims were not independently audited. Prices, offers, availability, and delivery estimates may change. The personas are untested hypotheses; no conversion impact has been established.

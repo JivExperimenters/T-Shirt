@@ -10,6 +10,12 @@
 
 The products and purchase configurations differ across merchants. They are useful for comparing interface and buying-flow decisions, but their prices are not a controlled, like-for-like comparison.
 
+## Follow-up research scope
+
+The current `E01–E12` evidence set covers only the three competitors listed above. To better test Maya's interest in original graphic work, a next audit should consider [Threadless](https://www.threadless.com/) and [Redbubble](https://www.redbubble.com/) using the same homepage, category, product, and cart checkpoints. These sites are candidates only; they have not been inspected for this report.
+
+To test Marcus's wholesale use case, compare a consistent order of 30 matching shirts and record quantity-tier prices, size/color availability, stock information, delivery options, and delivered total. The current single-item observations do not establish bulk discounts, inventory depth, or order value.
+
 ## Evidence practice
 
 The `E01–E12` register and screenshot captions are the factual basis for the comparison. The audit did not create accounts, subscribe to mailing lists, or submit personal payment information. Merchant claims such as “Most Loved,” savings, ratings, and delivery promises are recorded as displayed, not treated as independently verified.
@@ -38,6 +44,7 @@ These lenses support interpretation; they do not prove a merchant's intent or cu
 - [Crazy Dog T-Shirts](https://www.crazydogtshirts.com/)
 - [CheapesTees](https://www.cheapestees.com/)
 - [Jiffy](https://www.jiffy.com/)
+- Follow-up candidates, not audited in this report: [Threadless](https://www.threadless.com/) and [Redbubble](https://www.redbubble.com/)
 - [Mark & Pearson archetype framework](https://carolspearson.com/about/the-pearson-12-archetype-system-human-development-and-evolution)
 - [Cialdini's principles](https://cialdini.com/principles)
 - V&A: [What was Modernism?](https://www.vam.ac.uk/articles/what-was-modernism) and [What is Postmodernism?](https://www.vam.ac.uk/articles/what-is-postmodernism)
