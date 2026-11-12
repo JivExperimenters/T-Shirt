@@ -6,8 +6,8 @@ The audit compared public US desktop pages for one first-time shopper buying a s
 
 | Competitor | Role in the audit | Observed item / cart cost | What the experience demonstrates |
 | --- | --- | --- | --- |
-| [Crazy Dog T-Shirts](https://www.crazydogtshirts.com/) | Novelty and humor graphic tees | Selected shirt: `$14.99`; shipping and tax deferred | Distinctive humor can attract attention, but intrusive prompts and incomplete cart costs can distract or create uncertainty. |
-| [CheapesTees](https://www.cheapestees.com/) | Wholesale blanks and custom basics | Gildan 3000 White, M: `$2.98`; cart subtotal `$3.47` with preselected `$0.49` Shipping Protection | A scannable catalog and low unit prices help comparison; a preselected add-on makes the cart total feel less transparent. |
+| [Crazy Dog T-Shirts](https://www.crazydogtshirts.com/) | Novelty and humor graphic tees | Selected shirt: `$14.99`; shipping and tax deferred | Expressive graphics sit within a familiar, relatively minimalist storefront; intrusive prompts and incomplete cart costs can distract or create uncertainty. |
+| [CheapesTees](https://www.cheapestees.com/) | Wholesale blanks and custom basics | Gildan 3000 White, M: `$2.98`; cart subtotal `$3.47` with preselected `$0.49` Shipping Protection | A scannable catalog and visible unit price help comparison; the audit did not establish bulk price breaks or inventory depth. A preselected add-on makes the cart total less transparent. |
 | [Jiffy](https://www.jiffy.com/) | Blank apparel, transfers, and custom printing | C1717 blank: `$6.28` White / `$7.53` Butter in the report; custom cart item `$38.38`, with `$9.95` rush delivery selected (`$48.33` total) | Delivery estimates and size-tier prices can reduce uncertainty; custom printing and rush delivery can change the total substantially. |
 
 ## Crazy Dog T-Shirts — expressive humor
@@ -21,7 +21,7 @@ Sources: [homepage](https://www.crazydogtshirts.com/), [selected product page](h
 | `E03` — Product | “Can't Work Today My Arm Is In A Cast” in Heather Navy, size S, listed at `$14.99`; sizes `S–5XL` appear. Fabric weight and shipping cost are not visible above the fold. |
 | `E04` — Cart | One item totals `$14.99`; shipping and taxes are deferred until checkout. |
 
-**Interpretation:** The humor and pop-culture references suggest a Jester character and a postmodern visual voice. The product grid and buy box are recognizable e-commerce patterns, but the floating prompt competes for attention. Humor and expressive design are useful ideas; late shipping information and missing garment details are not.
+**Interpretation:** The humor and pop-culture references suggest a Jester character. The captured page has a familiar, relatively minimalist e-commerce structure, while the product graphics and hero are expressive. Those cues do not establish that the overall site is postmodern. The floating prompt competes for attention; late shipping information and missing garment details are not useful models.
 
 ## CheapesTees — wholesale utility
 
@@ -34,7 +34,7 @@ Sources: [homepage](https://www.cheapestees.com/), [Gildan collection](https://w
 | `E07` — Product | Gildan 3000 in White shows `$2.98` and a “Price Seen Elsewhere” comparison. **The PDF text says `$5.80`, while the embedded screenshot appears to show `$5.00`; recheck the original page before using either comparison figure.** |
 | `E08` — Cart | The shirt is `$2.98`; the subtotal is `$3.47` because `$0.49` Shipping Protection is already selected. Shipping requires a State/ZIP lookup. |
 
-**Interpretation:** The consistent catalog and technical product naming read as practical and modernist. Product codes and visible review counts provide comparison cues. The clear unit price is useful; the preselected protection fee and headline-versus-threshold shipping presentation are friction points.
+**Interpretation:** The consistent catalog and technical product naming read as practical. Product codes and visible review counts provide comparison cues. The observed `$2.98` unit price is not evidence of quantity discounts, available stock across sizes/colors, or the value of a 30-shirt order. The preselected protection fee and headline-versus-threshold shipping presentation are friction points.
 
 ## Jiffy — delivery and customization
 
@@ -55,6 +55,12 @@ Sources: [homepage](https://www.jiffy.com/), [Comfort Colors category](https://w
 - **Keep expression purposeful:** Humor and custom artwork can distinguish a brand without turning the shopping interface itself into a competing set of prompts.
 - **Show the real cost:** Shipping thresholds, optional services, and custom/expedited charges should be clear before checkout.
 - **Separate observation from interpretation:** Merchant labels such as “Most Loved,” “Save,” ratings, and delivery promises were recorded as displayed; they were not independently verified claims.
+
+## Audience fit and follow-up scope
+
+The current three-site audit does not fully represent either persona. For Maya's interest in original graphic work, include [Threadless](https://www.threadless.com/) and [Redbubble](https://www.redbubble.com/) as candidates in a follow-up audit. They have not been inspected for this report and are not evidence for claims about product quality, pricing, or audience fit.
+
+For Marcus, Position B should mean a utility-first bulk buying experience, not a novelty-sale catalog. A follow-up should compare a consistent order of 30 matching shirts and record quantity-tier prices, size/color availability, stock information, delivery options, and delivered total. The current captures do not establish those bulk capabilities for any competitor.
 
 ## Data items to recheck
 
