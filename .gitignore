@@ -1,8 +1,0 @@
-.env
-.env.*
-!.env.example
-.DS_Store
-Thumbs.db
-node_modules/
-.vitepress/cache/
-.vitepress/dist/
