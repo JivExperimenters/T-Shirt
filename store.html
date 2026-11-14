@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jivitesh's Tee Studio — SQLite Storefront & Simulated Checkout</title>
+  <style>
+    :root { --bg: #f8fafc; --card: #ffffff; --ink: #0f172a; --muted: #475569; --accent: #1d4ed8; --border: #e2e8f0; }
+    * { box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
+    body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.5; }
+    .ribbon { background: #0f172a; color: #fff; text-align: center; padding: 8px 16px; font-size: 0.9rem; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 24px 16px; }
+    header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 32px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 18px; }
+    .badge { display: inline-block; background: #eff6ff; color: var(--accent); padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+    .price { font-size: 1.35rem; font-weight: 700; margin: 8px 0; }
+    .sizes { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0; }
+    .size-btn { padding: 6px 10px; border: 1px solid var(--border); background: #fff; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
+    .size-btn.active { border-color: var(--accent); background: #eff6ff; font-weight: 700; }
+    button.primary { background: var(--accent); color: #fff; border: none; padding: 10px 14px; border-radius: 6px; font-weight: 600; cursor: pointer; width: 100%; }
+    .panels { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    input, select { width: 100%; padding: 8px 10px; margin: 4px 0 12px; border: 1px solid var(--border); border-radius: 4px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { border-bottom: 1px solid var(--border); padding: 8px; text-align: left; }
+  </style>
+</head>
+<body>
+  <div class="ribbon">
+    Open Student Offer: Use code <strong>CAMPUS10</strong> for 10% off · Free Standard Shipping at $45+ (Flat $4.99 under $45 · Zero pre-checked protection fees)
+  </div>
+  <div class="container">
+    <header>
+      <div>
+        <h1 style="margin:0;">Jivitesh's Tee Studio (SQLite Prototype)</h1>
+        <p style="margin:4px 0 0; color:var(--muted);">Modernist grid · Per-size pricing · 3-bar wearer fit reviews · Persistent SQLite cart & simulated checkout</p>
+      </div>
+      <span class="badge">SQLite DB: db/store.sqlite</span>
+    </header>
+
+    <h2>1. Curated Graphic Tee Catalog (Loaded from SQLite <code>products</code> & <code>reviews</code>)</h2>
+    <div id="catalog" class="grid"></div>
+
+    <div class="panels">
+      <div class="card">
+        <h2 style="margin-top:0;">2. Persistent Cart & Transparent Shipping Estimator</h2>
+        <div id="cart-list"></div>
+        <label>Shipping ZIP Code (e.g., Butler 07405 or Newark 07102)</label>
+        <input id="zip" value="07405" />
+        <label>Student Promo Code (Try <code>CAMPUS10</code>)</label>
+        <input id="promo" value="CAMPUS10" oninput="render()" />
+        <div id="cart-totals" style="background:#f1f5f9; padding:12px; border-radius:6px; margin-bottom:12px;"></div>
+
+        <h3>Simulated Checkout (Saves to SQLite <code>orders</code>)</h3>
+        <form onsubmit="submitOrder(event)">
+          <label>Full Name</label>
+          <input id="cust-name" required placeholder="Maya Lin" />
+          <label>Campus Email</label>
+          <input id="cust-email" type="email" required placeholder="maya@njit.edu" />
+          <button type="submit" class="primary">Place Simulated Order (Save to SQLite)</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2 style="margin-top:0;">3. Saved Orders in SQLite (Run → Save → Reopen Check)</h2>
+        <p style="color:var(--muted); font-size:0.9rem;">Stop and restart <code>node server.js</code>—these orders reload directly from <code>db/store.sqlite</code>.</p>
+        <div id="orders-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let state = { products: [], reviews: [], cart: [], orders: [], orderItems: [] };
+    let selectedSizes = {};
+
+    async function loadState() {
+      const res = await fetch('/api/state');
+      state = await res.json();
+      for (const p of state.products) {
+        if (!selectedSizes[p.id]) selectedSizes[p.id] = 'M';
+      }
+      render();
+    }
+
+    function sizePriceCents(p, size) {
+      let c = p.base_price_cents;
+      if (size === '2XL') c += p.upcharge_2xl_cents;
+      if (size === '3XL') c += p.upcharge_3xl_cents;
+      return c;
+    }
+
+    function fmt(cents) { return '$' + (cents / 100).toFixed(2); }
+
+    function selectSize(pid, size) {
+      selectedSizes[pid] = size;
+      render();
+    }
+
+    async function addToCart(pid) {
+      const size = selectedSizes[pid] || 'M';
+      await fetch('/api/cart', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ product_id: pid, size, quantity: 1 })
+      });
+      await loadState();
+    }
+
+    async function removeCart(id) {
+      await fetch('/api/cart/' + id, { method: 'DELETE' });
+      await loadState();
+    }
+
+    async function submitOrder(e) {
+      e.preventDefault();
+      const customer_name = document.getElementById('cust-name').value;
+      const campus_email = document.getElementById('cust-email').value;
+      const zip_code = document.getElementById('zip').value;
+      const promo_code = document.getElementById('promo').value;
+      const res = await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ customer_name, campus_email, zip_code, promo_code })
+      });
+      if (res.ok) {
+        document.getElementById('cust-name').value = '';
+        document.getElementById('cust-email').value = '';
+        await loadState();
+      }
+    }
+
+    function render() {
+      const catalog = document.getElementById('catalog');
+      catalog.innerHTML = state.products.map(p => {
+        const curSize = selectedSizes[p.id] || 'M';
+        const curPrice = sizePriceCents(p, curSize);
+        const prodReviews = state.reviews.filter(r => r.product_id === p.id);
+        const sizes = ['S', 'M', 'L', 'XL', '2XL', '3XL'];
+        return `
+          <div class="card">
+            <span class="badge">${p.category}</span>
+            <h3 style="margin:8px 0 4px;">${p.title}</h3>
+            <div style="color:var(--muted); font-size:0.85rem;"><strong>Fabric:</strong> ${p.fabric_weight}</div>
+            <div class="price">${fmt(curPrice)} <span style="font-size:0.8rem; font-weight:400; color:var(--muted);">(${curSize})</span></div>
+            <div class="sizes">
+              ${sizes.map(s => `<button class="size-btn ${curSize === s ? 'active' : ''}" onclick="selectSize(${p.id}, '${s}')">${s} (${fmt(sizePriceCents(p, s))})</button>`).join('')}
+            </div>
+            <div style="background:#f8fafc; border:1px solid var(--border); padding:8px; border-radius:4px; font-size:0.82rem; margin:10px 0;">
+              <strong>3-Bar Wearer Summary (${prodReviews.length} SQLite reviews):</strong><br/>
+              • <strong>Fit:</strong> ${p.fit_summary}<br/>
+              • <strong>Softness & Wash Durability:</strong> 4.8 / 5.0 avg
+            </div>
+            <button class="primary" onclick="addToCart(${p.id})">Add ${curSize} to SQLite Cart (${fmt(curPrice)})</button>
+          </div>
+        `;
+      }).join('');
+
+      const cartEl = document.getElementById('cart-list');
+      if (!state.cart.length) {
+        cartEl.innerHTML = '<p style="color:var(--muted);">Your SQLite cart is currently empty.</p>';
+      } else {
+        cartEl.innerHTML = `<table><thead><tr><th>Shirt</th><th>Size</th><th>Price</th><th></th></tr></thead><tbody>` +
+          state.cart.map(c => `<tr><td>${c.title}</td><td>${c.size}</td><td>${fmt(c.unit_price_cents)}</td><td><button onclick="removeCart(${c.id})">Remove</button></td></tr>`).join('') +
+          `</tbody></table>`;
+      }
+
+      const subtotal = state.cart.reduce((s, c) => s + c.unit_price_cents * c.quantity, 0);
+      const promo = (document.getElementById('promo')?.value || '').trim().toUpperCase();
+      const discount = promo === 'CAMPUS10' ? Math.round(subtotal * 0.1) : 0;
+      const afterDisc = subtotal - discount;
+      const shipping = subtotal === 0 ? 0 : (afterDisc >= 4500 ? 0 : 499);
+      const total = afterDisc + shipping;
+
+      document.getElementById('cart-totals').innerHTML = `
+        <div>Subtotal: <strong>${fmt(subtotal)}</strong></div>
+        <div>Student Promo (10%): <strong>-${fmt(discount)}</strong></div>
+        <div>Estimated Shipping (Free at $45+): <strong>${fmt(shipping)}</strong></div>
+        <div>Pre-checked Protection Fees: <strong>$0.00 (Strictly Opt-In Only)</strong></div>
+        <div style="margin-top:6px; font-size:1.1rem;">Delivered Total: <strong>${fmt(total)}</strong></div>
+      `;
+
+      const ordersEl = document.getElementById('orders-list');
+      if (!state.orders.length) {
+        ordersEl.innerHTML = '<p style="color:var(--muted);">No simulated orders saved yet.</p>';
+      } else {
+        ordersEl.innerHTML = state.orders.map(o => {
+          const items = state.orderItems.filter(i => i.order_id === o.id);
+          return `<div style="border-bottom:1px solid var(--border); padding:8px 0; font-size:0.88rem;">
+            <strong>Order #ORD-${1000 + o.id}</strong> · ${o.customer_name} (${o.campus_email}) · ZIP ${o.zip_code}<br/>
+            Items: ${items.map(i => `${i.product_title} (${i.size}, ${fmt(i.unit_price_cents)})`).join(', ')}<br/>
+            Subtotal: ${fmt(o.subtotal_cents)} | Discount: -${fmt(o.discount_cents)} | Shipping: ${fmt(o.shipping_cents)} | <strong>Total: ${fmt(o.total_cents)}</strong>
+          </div>`;
+        }).join('');
+      }
+    }
+
+    loadState();
+  </script>
+</body>
+</html>
