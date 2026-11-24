@@ -1,116 +1,61 @@
-# T-Shirt Store Plan & SQLite Architecture (IS117-007)
+# T-Shirt Store Plan & GitHub Pages Prototype (IS117-007)
 
-**Student:** Jivitesh Duddu · **Checkpoint:** T-Shirt Plan (Due November 17, 2026)  
-**Target Audience Carried Forward:** **Maya, 20** (Creative College Student & Indie Buyer shopping for 1–3 expressive graphic/custom tees with clear fit, fabric weight, and upfront delivered cost).
+**Student:** Jivitesh Duddu · **Checkpoint:** T-shirt Plan (Due December 1, 2026 at 8:30 a.m. Eastern)  
+**Target Audience Carried Forward:** **Maya, 20** (Creative College Student & Indie Buyer shopping for 1–3 expressive graphic tees with clear fit, fabric weight, and upfront delivered cost).
 
-This plan translates our November 5 competitive research ([Crazy Dog T-Shirts](https://www.crazydogtshirts.com/), [CheapesTees](https://www.cheapestees.com/), and [Jiffy](https://www.jiffy.com/)) into a concrete build plan. It compares two implementation approaches for Maya, defines five user stories with essential features and observable verification checks, carries forward our Brand Studio direction and two honest persuasion elements, and includes a working **SQLite backend (`server.js` + `db/schema.sql`)** adapted from the course *Campus Cotton* (`run → save → reopen`) starter.
+This plan builds directly on our November 5 competitive research ([Crazy Dog T-Shirts](https://www.crazydogtshirts.com/), [CheapesTees](https://www.cheapestees.com/), and [Jiffy](https://www.jiffy.com/)) and peer feedback ([Issues #3, #4, #10, #12, #13, #14](https://github.com/JivExperimenters/T-Shirt/issues?q=is%3Aissue+state%3Aclosed)). It keeps the build scope small for a **GitHub Pages static storefront + simulated checkout (`public/store.html`)** using **browser `localStorage`** and **demo data only** (no real payment or customer information).
 
-## 1. Compare Two Concise Approaches for Our Chosen Audience (Maya, 20)
+## 1. Compare Two Ways to Shop for the Same Shirt (for Maya, 20)
 
-| Dimension | Approach A (Chosen): Curated Graphic Storefront + Fit-Confidence Picker + Transparent SQLite Checkout | Approach B (Alternative Not Chosen): Open-Canvas DIY Customizer Studio |
+| Dimension | Approach A (Chosen): Curated Graphic Storefront + Fit-Confidence Picker + Transparent Demo Checkout | Approach B (Alternative Not Chosen): Open-Canvas DIY Customizer Studio |
 | --- | --- | --- |
-| **Core Experience for Maya** | Maya browses a calm 4-column Modernist grid of original campus/gaming/indie graphic tees (`$18.00` base), checks exact per-size pricing (`S–3XL`) and a 3-bar wearer review summary (*Fit, Softness, Wash Durability*), and checks out with an upfront ZIP shipping estimator and zero preselected add-on fees. | Maya opens a blank shirt canvas (similar to Jiffy's *Create Mockup* flow in `E11–E12`), uploads custom artwork, resizes print dimensions, and orders a one-off custom DTF shirt. |
-| **Why It Fits / Doesn't Fit Our Research** | Directly solves the three biggest friction points from our audit: removes Crazy Dog's spin-wheel clutter (`E01`) and missing fabric weight (`E03`), eliminates CheapesTees' preselected `$0.49` protection fee (`E08`), and adapts Jiffy's upfront size-tier pricing (`E11`). | In our Jiffy audit (`E12`), a single custom-printed shirt with rush shipping cost `$48.33` (`$38.38` item + `$9.95` delivery)—far above Maya's `$16–$22` student budget—and requires complex canvas rendering before core sizing and checkout clarity are proven. |
-| **SQLite Backend Scope** | Clean relational schema (`products`, `reviews`, `cart_items`, `orders`, `order_items`) that persists cart selections, simulated checkout receipts, and wearer fit reviews across server restarts (`run → save → reopen`). | Requires storing uploaded binary image blobs, bounding-box coordinates, and per-square-inch DTF transfer pricing rules in SQLite. |
-| **Decision** | **Chosen for v1 Build:** Focused, testable in a 5-peer classroom walkthrough, and directly proves our research hypotheses. | **Deferred:** Kept as a future v2 feature once the curated graphic catalog and SQLite checkout are verified. |
+| **How Maya Shops for the Same Shirt** | Maya browses a calm 4-column Modernist grid of original campus/gaming/indie graphic tees (`$18.00` base), selects her size (`S–3XL`) with exact pricing visible, reads a 3-bar wearer review summary (*Fit, Softness, Wash Durability*), and completes a simulated checkout with an upfront ZIP shipping estimator saved to browser `localStorage`. | Maya opens a blank shirt canvas (similar to Jiffy's *Create Mockup* flow in `E11–E12`), uploads custom artwork, resizes print dimensions, and orders a one-off custom DTF shirt. |
+| **Why It Fits / Doesn't Fit Our Research** | Solves the three main frictions from our audit: removes Crazy Dog's spin-wheel clutter (`E01`) and missing fabric weight (`E03`), eliminates CheapesTees' preselected `$0.49` protection fee (`E08`), and adapts Jiffy's upfront size-tier pricing (`E11`). Runs 100% statically on GitHub Pages. | In our Jiffy audit (`E12`), a single custom-printed shirt with rush shipping cost `$48.33` (`$38.38` item + `$9.95` delivery)—far above Maya's `$16–$22` student budget—and adds heavy canvas complexity before core sizing and checkout clarity are proven. |
+| **Technology Fit (GitHub Pages + `localStorage`)** | Static HTML/CSS/JS on **GitHub Pages** (`public/store.html`) using browser `localStorage` (`jivitesh_tee_cart`, `jivitesh_tee_orders`)—zero backend hosting required and instant save-and-reload testing. | Would require server-side image storage, bounding-box state, and per-square-inch DTF pricing rules. |
+| **Decision** | **Chosen for v1 Build:** Small, focused, and easy to test on GitHub Pages in a 5-peer walkthrough. | **Deferred:** Kept as a future v2 idea once core sizing and demo checkout are verified. |
 
 ## 2. Carry Forward: Brand Promise, Visual Choices & Two Honest Persuasion Elements
 
-### Brand Promise & Character
 * **Brand Promise:** *"Original campus and indie graphic tees presented in a calm, uncluttered store—with exact fabric specs, real wearer fit feedback, and zero surprise checkout fees."*
-* **Brand Character ([Pearson Archetypes](https://carolspearson.com/about/the-pearson-12-archetype-system-human-development-and-evolution)):** Primary **Creator** (original student/indie graphic design) supported by **Everyperson** (transparent everyday pricing) and a touch of **Jester** wit inside the shirt artwork itself.
+* **Brand Character ([Pearson Archetypes](https://carolspearson.com/about/the-pearson-12-archetype-system-human-development-and-evolution)):** Primary **Creator** (original student/indie graphic design) supported by **Everyperson** (transparent everyday pricing) and light **Jester** wit inside the shirt artwork itself.
+* **Visual Choices ([V&A Modernism](https://www.vam.ac.uk/articles/what-was-modernism) vs. [Postmodernism](https://www.vam.ac.uk/articles/what-is-postmodernism)):** Restrained 4-column **Modernist** storefront grid (2 columns on mobile), generous whitespace, high-contrast sans-serif typography, and **zero floating spin-the-wheel overlays** (`E01`), while letting the shirt illustrations carry the expressive personality ([Issue #12](https://github.com/JivExperimenters/T-Shirt/issues/12)).
+* **Honest Persuasion Element 1 — Verifiable Social Proof (Attribute-Organized Wearer Reviews):** Summarizes wearer feedback across *Fit (Runs Small / True to Size / Runs Large)*, *Fabric Softness (`1–5`)*, and *After-Wash Print Quality (`1–5`)*, labeling reviewer height and size ordered only when provided ([Issue #10](https://github.com/JivExperimenters/T-Shirt/issues/10)) and never fabricating urgency counters.
+* **Honest Persuasion Element 2 — Honest Reciprocity & Risk Reduction:** Shows an open `10%` student promo code (`CAMPUS10`) in a quiet top ribbon (no email gate, adapted from Jiffy `E09`) and displays a ZIP-code shipping estimate (`$4.99` flat standard shipping or `$0.00` Free Shipping at `$45+`) inside the cart with **zero preselected `$0.49` protection fees** (fixing `E04` and `E08`).
 
-### Visual Choices (Reusing Brand Studio & SPEC)
-* **Restrained Modernist Storefront Grid ([V&A Modernism](https://www.vam.ac.uk/articles/what-was-modernism)):** Up to 4 product cards per row on desktop (2 on mobile), high-contrast sans-serif typography, generous whitespace, and **no floating spin-the-wheel overlays** (`E01`).
-* **Expressive Shirt Graphics ([V&A Postmodernism](https://www.vam.ac.uk/articles/what-is-postmodernism)):** The interface layout stays strictly minimalist and functional while the T-shirt illustrations and collection titles carry the expressive, playful personality.
+## 3. Five User Stories, Essential Features & Observable Checks
 
-### Two Honest Persuasion Elements ([Cialdini Principles](https://cialdini.com/principles))
-1. **Honest Social Proof (Attribute-Organized Wearer Reviews):** Instead of unverified star badges alone (`E02`), product pages summarize SQLite-backed wearer reviews across three concrete bars—*Fit (Runs Small / True to Size / Runs Large)*, *Fabric Softness (`1–5`)*, and *After-Wash Print Quality (`1–5`)*—displaying reviewer height and size ordered only when genuinely provided and never fabricating urgency counters.
-2. **Honest Reciprocity & Risk Reduction (Open Student Offer + Opt-In-Only Cart):** Displays an open `10%` student promo code (`CAMPUS10`) in a quiet top banner (no email gate required, adapted from Jiffy `E09`) and shows a ZIP-code shipping estimate (`$4.99` flat standard shipping or `$0.00` Free Shipping at `$45+`) directly inside the cart with **zero preselected `$0.49` protection add-ons** (fixing `E04` and `E08`).
-
-## 3. Five User Stories, Essential Features & Observable Verification Checks
-
-| ID & User Story (for Maya, 20) | Essential Feature (UI + SQLite Backend) | Observable Verification Check (Classmate Walkthrough) |
+| ID & User Story (for Maya, 20) | Essential Feature | Observable Verification Check *(Planned until run)* |
 | --- | --- | --- |
-| **US-1: Fast Catalog Scan & Fabric Clarity**<br>*As Maya, I want to see each shirt's graphic, base price, and exact fabric weight on the main grid without pop-up interruptions so I can compare shirts in under 5 seconds.* | • 4-column responsive product grid populated via `GET /api/products` from SQLite.<br>• Each card shows thumbnail, title, fabric weight (`6.1 oz 100% US Ringspun Cotton`), base price (`$18.00`), and review count.<br>• Quiet top banner with open code `CAMPUS10`. | **Check 1:** A classmate opens the store, states the base price and fabric weight of *Compiler Error Tee* within 5 seconds, and confirms zero pop-up modals block the screen. |
-| **US-2: Per-Size Price & Fit-Confidence Selection**<br>*As Maya, I want to see the exact price for every size (`S–3XL`) and read a 3-bar Fit / Softness / Wash-Durability summary before clicking "Add to Cart" so I can pick my size without guessing.* | • Size selector pills (`S, M, L, XL` at `$18.00`; `2XL` at `$20.00`; `3XL` at `$21.00`) that update the displayed price immediately (`E11`).<br>• 3-bar attribute summary queried from the SQLite `reviews` table (`GET /api/products/:id/reviews`). | **Check 2:** A classmate clicks `2XL` on a product card/detail view, states the updated `$20.00` price before adding to cart, and reads the 3-bar fit summary without opening a separate chart. |
-| **US-3: Persistent SQLite Cart & Upfront Shipping Estimator**<br>*As Maya, I want my cart items saved in SQLite and want to see my ZIP-code shipping cost and `CAMPUS10` discount in the cart with no preselected extra fees.* | • Cart API (`GET /api/cart`, `POST /api/cart`, `DELETE /api/cart/:id`) writing to the SQLite `cart_items` table.<br>• Inline ZIP estimator (`07405` / `07102` -> `$4.99` standard shipping, or `$0.00` when subtotal `>= $45.00`) and `CAMPUS10` (`-10%`) toggle.<br>• No pre-checked `$0.49` shipping protection toggle (`E08`). | **Check 3 (`Run → Save → Reopen`):** Add 1 shirt to the cart, enter ZIP `07405`, verify the exact delivered total (`$18.00 - $1.80 promo + $4.99 shipping = $21.19`), restart the server/reload the browser, and confirm the cart item persists from SQLite. |
-| **US-4: Simulated Checkout & Persistent SQLite Order Receipt**<br>*As Maya, I want to submit a simulated order (name, campus email, ZIP code, and delivery option without real payment data) and see my saved order confirmation reload from SQLite.* | • Simulated checkout endpoint (`POST /api/orders`) that validates inputs, inserts into SQLite `orders` and `order_items` tables inside a database transaction, clears `cart_items`, and returns a persistent Order ID.<br>• Saved Orders list (`GET /api/orders`) showing past receipts. | **Check 4 (`Run → Save → Reopen`):** Submit a simulated order, record the Order ID, stop the Node server, restart it, reopen the page, and verify that the saved order receipt still appears in the **Saved Orders (SQLite)** section. |
-| **US-5: Persistent Wearer Fit Review Submission**<br>*As a student buyer, I want to submit a fit rating (`Runs Small / True to Size / Runs Large`), softness score (`1–5`), and optional height/size note that saves to SQLite and updates the shirt's review summary.* | • Review form (`POST /api/products/:id/reviews`) inserting into the SQLite `reviews` table and recalculating the product's review count and fit distribution. | **Check 5 (`Run → Save → Reopen`):** Submit a new review on a shirt, restart/reopen the page, and verify that the new review text and updated count load from SQLite. |
+| **US-1: Fast Catalog Scan & Fabric Clarity**<br>*As Maya, I want to see each shirt's graphic, base price, and exact fabric weight on the main grid without pop-ups so I can compare shirts in under 5 seconds.* | • 4-column responsive product grid (`public/store.html`).<br>• Each card shows title, fabric weight (`6.1 oz 100% US Ringspun Cotton`), base price (`$18.00`), and review summary.<br>• Quiet top banner with open code `CAMPUS10`. | **Check 1 (Planned):** A classmate opens the GitHub Pages storefront, states the base price and fabric weight of *Compiler Error Tee* within 5 seconds, and confirms zero pop-up modals block the screen. |
+| **US-2: Per-Size Price & Fit-Confidence Selection**<br>*As Maya, I want to see the exact price for every size (`S–3XL`) and read a 3-bar Fit / Softness / Wash-Durability summary before clicking "Add to Cart" so I can pick my size without guessing.* | • Size selector pills (`S–XL` at `$18.00`; `2XL` at `$20.00`; `3XL` at `$21.00`) updating the displayed price immediately (`E11`).<br>• 3-bar attribute summary (`Runs Small / True to Size / Runs Large`, Softness, Wash Durability). | **Check 2 (Planned):** A classmate clicks `2XL` on a product card, states the updated `$20.00` price before adding to cart, and reads the 3-bar fit summary without opening a separate chart. |
+| **US-3: Persistent Browser Cart & Upfront ZIP Shipping Estimator**<br>*As Maya, I want my cart saved in the browser and want to see my ZIP shipping cost and `CAMPUS10` discount with no preselected extra fees.* | • Cart state saved in `localStorage` (`jivitesh_tee_cart`).<br>• Inline ZIP estimator (`$4.99` standard or `$0.00` at `$45+`) + `CAMPUS10` (`-10%`) calculation + `$0.00` pre-checked fees. | **Check 3 (Planned — Save & Reload):** Add 1 shirt (`$18.00`, Size M) to the cart, enter ZIP `07405`, verify `$21.19` delivered total (`$18.00 - $1.80 + $4.99`), reload the browser tab, and confirm the cart item remains saved. |
+| **US-4: Simulated Demo Checkout & Save-and-Reload Order Receipt**<br>*As Maya, I want to submit a demo order (using fictional demo name, campus alias, and ZIP—no real payment data) and see the same order receipt after reloading the page.* | • Simulated checkout form saving `{ orderId, demoLabel, items, subtotal, discount, shipping, total, zip, createdAt }` to `localStorage` (`jivitesh_tee_orders`).<br>• **Saved Demo Orders** panel rendering saved receipts on page load. | **Check 4 (Planned — Save & Reload):** Submit a demo order (`Maya Lin (Demo)`), record the generated Order ID (e.g., `DEMO-1001`), refresh/reopen the GitHub Pages URL, and verify the exact same order receipt appears in **Saved Demo Orders**. |
+| **US-5: Readable Phone Layout & Keyboard Navigation**<br>*As Maya shopping on a phone between classes, I want the size pills and cart drawer to fit cleanly on a narrow screen and work with keyboard navigation.* | • Responsive CSS Grid (`>= 16px` body text, `>= 44x44px` tap targets) and semantic `<button>` / `<label>` elements with `:focus-visible` outlines. | **Check 5 (Planned):** Open the prototype at `375px` width (zero horizontal overflow) and navigate from catalog to checkout using only `Tab` and `Enter`. |
 
-## 4. Simulated Checkout & Working SQLite Backend (`Campus Cotton` Starter Adaptation)
+## 4. Simulated Checkout & Browser Storage Starter (`Save & Reload`)
 
-Per the assignment requirement (*"SQLite starter: Campus Cotton first → run → save → reopen. Use this supported code if helpful; explain your changes. A public browser-storage preview alone does not meet SQLite"*), our repository includes a working Node.js + SQLite backend (`server.js` and `db/schema.sql`) and interactive storefront (`public/store.html`).
+Per the assignment instructions (*"Plan a simulated checkout and the order data JavaScript will save in the browser"*), our GitHub Pages prototype (`public/store.html`) uses **JavaScript `localStorage`** with **demo data only**:
 
-### How We Adapted the *Campus Cotton* Starter (and Why `localStorage` Alone Is Not Used)
-* **Why SQLite instead of Browser Storage:** `localStorage` only saves data inside one browser tab on one device and disappears when site data is cleared. Our `server.js` backend uses a real on-disk **SQLite database (`db/store.sqlite`)** so products, cart items, simulated checkout orders, and wearer fit reviews persist on the server across restarts.
-* **Changes Made from the *Campus Cotton* Starter Pattern:**
-  1. **Added Per-Size Upcharges & Fabric Metadata (`products` table):** Added `fabric_weight` (`6.1 oz Ringspun Cotton`), `fit_note` (`True to Size`), and `upcharge_2xl_cents` / `upcharge_3xl_cents` so size pricing is enforced on the server, not just in client JavaScript.
-  2. **Added Transparent Cart & Fee-Free Simulated Checkout (`cart_items`, `orders`, `order_items` tables):** Stores `zip_code`, `promo_code` (`CAMPUS10`), `discount_cents`, and `shipping_cents` (`$4.99` flat standard shipping or `$0.00` over `$45`), and hard-codes `prechecked_fee_cents = 0` so no hidden or opt-out protection fees are ever added.
-  3. **Added Attribute-Specific Wearer Reviews (`reviews` table):** Stores `fit_vote` (`small`, `true`, `large`), `softness_score` (`1–5`), `wash_score` (`1–5`), and optional `reviewer_height` / `size_ordered` to power our 3-bar social proof summary.
+* **What JavaScript Saves in the Browser (`localStorage`):**
+  1. `jivitesh_tee_cart`: Array of selected items (`{ id, title, size, unitPriceCents, quantity }`).
+  2. `jivitesh_tee_orders`: Array of simulated demo order receipts (`{ orderId, demoCustomerLabel, zipCode, promoCode, subtotalCents, discountCents, shippingCents, totalCents, items, timestamp }`).
+* **Changes Explained from the Browser Storage Starter:**
+  1. Added **server-free per-size pricing rules** (`2XL +$2.00`, `3XL +$3.00`) and `CAMPUS10` (`-10%`) + `$45+` free-shipping threshold math directly in the cart calculation.
+  2. Enforced **Demo Data Only** labeling (`DEMO ESTIMATE — No real payment or customer PII collected`) so no credit card fields, street addresses, or real personal emails are ever requested or stored.
 
-### SQLite Database Schema (`db/schema.sql`)
+## 5. React Documentary Idea Applied to My Store
 
-```sql
-CREATE TABLE IF NOT EXISTS products (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  slug TEXT UNIQUE NOT NULL,
-  title TEXT NOT NULL,
-  category TEXT NOT NULL,
-  fabric_weight TEXT NOT NULL,
-  base_price_cents INTEGER NOT NULL,
-  upcharge_2xl_cents INTEGER NOT NULL DEFAULT 200,
-  upcharge_3xl_cents INTEGER NOT NULL DEFAULT 300,
-  fit_summary TEXT NOT NULL
-);
+After watching [React.js: The Documentary (CultRepo / Honeypot)](https://www.youtube.com/watch?v=8pDqJVdNa44), I applied two core concepts from the film to this T-shirt storefront plan:
 
-CREATE TABLE IF NOT EXISTS cart_items (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  product_id INTEGER NOT NULL,
-  size TEXT NOT NULL,
-  unit_price_cents INTEGER NOT NULL,
-  quantity INTEGER NOT NULL DEFAULT 1,
-  FOREIGN KEY (product_id) REFERENCES products(id)
-);
+* **Declarative UI Driven by Explicit State:** In the documentary, Jordan Walke explains that traditional front-end UI bugs come from manually finding and patching individual DOM nodes when data changes—whereas React models the UI as a clean re-render from current **state** (such as the Like button example: *0 likes vs. 1 like vs. 40 likes*).
+  * **Example on My Store (`public/store.html`):** Instead of manually patching separate price tags and summary lines when Maya clicks a size or types a promo code, a single `render()` function recomputes the product price, cart count, `CAMPUS10` discount, shipping threshold (`$45+`), and **Saved Demo Orders** list directly from the current `selectedSizes`, `cart`, and `orders` state.
+* **Reusable Components Over Duplicated Markup:** As the documentary highlights when teams think atomically about UI building blocks, each T-shirt card follows one reusable **ProductCard** structure (*title, fabric weight, size-price pills, 3-bar fit summary, Add button*) so updating one layout rule updates the whole catalog consistently.
 
-CREATE TABLE IF NOT EXISTS orders (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  customer_name TEXT NOT NULL,
-  campus_email TEXT NOT NULL,
-  zip_code TEXT NOT NULL,
-  promo_code TEXT,
-  subtotal_cents INTEGER NOT NULL,
-  discount_cents INTEGER NOT NULL DEFAULT 0,
-  shipping_cents INTEGER NOT NULL,
-  total_cents INTEGER NOT NULL,
-  created_at TEXT NOT NULL DEFAULT (datetime('now'))
-);
+## 6. Quality, Accessibility, Privacy & Analytics Plan *(Planned Checks)*
 
-CREATE TABLE IF NOT EXISTS order_items (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  order_id INTEGER NOT NULL,
-  product_title TEXT NOT NULL,
-  size TEXT NOT NULL,
-  unit_price_cents INTEGER NOT NULL,
-  quantity INTEGER NOT NULL,
-  FOREIGN KEY (order_id) REFERENCES orders(id)
-);
-
-CREATE TABLE IF NOT EXISTS reviews (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  product_id INTEGER NOT NULL,
-  fit_vote TEXT NOT NULL CHECK(fit_vote IN ('Runs Small', 'True to Size', 'Runs Large')),
-  softness_score INTEGER NOT NULL CHECK(softness_score BETWEEN 1 AND 5),
-  wash_score INTEGER NOT NULL CHECK(wash_score BETWEEN 1 AND 5),
-  reviewer_height TEXT,
-  size_ordered TEXT,
-  comment TEXT NOT NULL,
-  created_at TEXT NOT NULL DEFAULT (datetime('now')),
-  FOREIGN KEY (product_id) REFERENCES products(id)
-);
-```
-
-### How to Run, Save, and Reopen Locally (`Run → Save → Reopen`)
-1. **Run:** In the repository root, run `node server.js` (uses Node's built-in `node:sqlite` / `sqlite3` CLI wrapper with zero external native compilation required) and open `http://localhost:3000`.
-2. **Save:** Select a shirt and size (`S–3XL`), click **Add to SQLite Cart**, enter ZIP `07405`, apply `CAMPUS10`, fill in the **Simulated Checkout** form (name + campus email), and click **Place Simulated Order**. Note the saved Order ID in the **Saved SQLite Orders** table.
-3. **Reopen:** Stop the server (`Ctrl+C`), run `node server.js` again, and refresh `http://localhost:3000` (or inspect `db/store.sqlite`). Your saved orders and submitted wearer reviews reload directly from the SQLite database file on disk.
+| Requirement | Concrete Plan & Target Signal | Status |
+| --- | --- | --- |
+| **1. Keyboard Accessibility Check** | Navigate `store.html` and the VitePress docs using **only `Tab`, `Shift+Tab`, and `Enter`** (no mouse) to verify visible focus rings on every size pill, Add-to-Cart button, and checkout submit button. | **Planned (not yet run)** |
+| **2. Phone-Layout Check** | Test `store.html` and `/plan` at a **`375px` mobile viewport** to confirm zero horizontal scrolling, readable text (`>= 16px`), and `>= 44x44px` tappable size buttons. | **Planned (not yet run)** |
+| **3. Protecting Private Data** | **Demo data only:** The simulated checkout accepts only a fictional display name and 5-digit ZIP code (`07405`)—zero credit cards, passwords, real street addresses, or personal phone/email fields are collected or saved in `localStorage`. | **Active Design Rule** |
+| **4. Usage Measure & Analytics Option** | **Useful Usage Measure:** *Cart-to-Demo-Order completion rate and frequency of `2XL/3XL` size-pill clicks* (shows whether upfront size pricing reduces hesitation).<br>**Planned Analytics Option (no live tracker installed for this checkpoint):** **Cloudflare Web Analytics** (free, cookie-free) or **Google Analytics 4** once the build is finalized. | **Planned (no live tracker installed)** |
