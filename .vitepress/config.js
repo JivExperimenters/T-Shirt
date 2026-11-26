@@ -1,24 +1,26 @@
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
-  title: "T-Shirt Site Research",
-  description:
-    "IS117-007 T-shirt competitive research, screenshot evidence, positioning hypotheses, and website specifications.",
+  title: "T-Shirt Site Research & Plan",
+  description: "IS117-007 T-shirt competitive research, store plan, and demo checkout.",
   base: "/T-Shirt/",
   rewrites: { "README.md": "index.md" },
   themeConfig: {
     outline: { level: 2, label: "On This Page" },
     nav: [
       { text: "Overview", link: "/" },
+      { text: "Store Plan", link: "/plan" },
       { text: "Competitors", link: "/competitors" },
       { text: "Specifications", link: "/specifications" },
       { text: "Screenshots", link: "/screenshots" },
+      { text: "Demo Store", link: "/store.html", target: "_blank" },
     ],
     sidebar: [
       {
-        text: "Research",
+        text: "Research & Plan",
         items: [
           { text: "Overview", link: "/" },
+          { text: "Store plan (Dec 1)", link: "/plan" },
           { text: "Competitor comparison", link: "/competitors" },
           { text: "Website specifications", link: "/specifications" },
           { text: "Screenshot evidence", link: "/screenshots" },
